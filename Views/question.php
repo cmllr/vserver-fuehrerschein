@@ -17,7 +17,7 @@
             <?php endif; ?>
             <ul class="answers">
                 <?php foreach ($question->Answers as $key => $value) : ?>
-                    <li><input type="checkbox" name="checkbox<?php echo $key; ?>" id="checkbox<?php echo $key; ?>" class="css-checkbox" /><label for="checkbox<?php echo $key; ?>" class="css-label"><?php echo $value->Text; ?></label></li>
+                    <li><input type="checkbox" name="answer<?php echo $key; ?>" id="answer<?php echo $key; ?>" class="css-checkbox" <?php echo (isset($question->ChoosedAnswers[$key])) ? "checked":"" ;?>/><label for="answer<?php echo $key; ?>" class="css-label"><?php echo $value->Text; ?></label></li>
                 <?php endforeach; ?>
             </ul>
             <div class="buttons">

@@ -16,6 +16,7 @@ class Question {
     public $Answers;
     public $Image;
     public $Identifier;
+    public $ChoosedAnswers;
     public function __construct($text,$answers,$identifier,$image) {
         $this->Text = $text;
         $this->Answers = $answers;

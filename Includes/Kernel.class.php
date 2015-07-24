@@ -18,10 +18,10 @@ class Kernel {
     private $Name;
 
     public function __construct() {
-        $this->QuestionSet = array();
+        $this->UpdateSession();
         $this->SetName = $this->GetTranslation("VServerCatalogue");
         $this->Name = $this->GetTranslation("VServerLicense");
-        $this->SetUpQuestions();
+
         if (!isset($_GET["q"])) {
             include './Views/welcome.php';
         } else {
@@ -29,16 +29,45 @@ class Kernel {
             if (empty($_POST)) {
                 $question = $this->GetQuestion((int) $_GET["q"]);
             } else {
+                $currentIndex = (int) $_GET["q"];
+                //save the result
+                $currentQuestion = (isset($this->QuestionSet[$currentIndex])) ? $this->QuestionSet[$currentIndex] : null;
+                $answers = array();
+                $currentQuestion->ChoosedAnswers = array();
+                foreach ($_POST as $key => $value) {
+                    if (strpos($key, "answer") !== false) {
+                        $index = str_replace("answer", "", $key);
+                        $answers[] = $currentQuestion->Answers[$index];
+                    }
+                }
+                if (!is_array($currentQuestion->ChoosedAnswers)) {
+                    $currentQuestion->ChoosedAnswers = $answers;
+                }
+                var_dump($this->QuestionSet[$currentIndex]);              
                 //next question, please
                 $wantedIndex = 0;
-                $currentIndex = (int) $_GET["q"];
                 $question = (isset($this->QuestionSet[$currentIndex++])) ? $this->QuestionSet[$currentIndex++] : null;
             }
+            var_dump($question);
+            $_SESSION["QuestionSet"] = $this->QuestionSet;
             if (!is_null($question)) {
                 include "./Views/question.php";
             } else {
                 echo "Ende";
             }
+        }
+    }
+
+    private function UpdateSession() {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if (!isset($_SESSION["QuestionSet"])) {
+            $this->QuestionSet = array();
+            $this->SetUpQuestions();
+            $_SESSION["QuestionSet"] = $this->QuestionSet;
+        } else {
+            $this->QuestionSet = $_SESSION["QuestionSet"];
         }
     }
 
@@ -53,8 +82,8 @@ class Kernel {
         $this->QuestionSet[] = $q2;
     }
 
-    private function GetQuestion($identifier) {        
-        return isset($this->QuestionSet[$identifier]) ?  $this->QuestionSet[$identifier] : null;
+    private function GetQuestion($identifier) {
+        return isset($this->QuestionSet[$identifier]) ? $this->QuestionSet[$identifier] : null;
     }
 
     private function GetTranslation($value) {
