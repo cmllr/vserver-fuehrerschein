@@ -17,10 +17,13 @@ class Question {
     public $Image;
     public $Identifier;
     public $ChoosedAnswers;
-    public function __construct($text,$answers,$identifier,$image) {
+    public $IsMarked;
+    public $ErrorPoints;
+    public function __construct($text,$answers,$identifier,$image,$errorPoints) {
         $this->Text = $text;
         $this->Answers = $answers;
         $this->Identifier = $identifier;
         $this->Image = $image;
+        $this->ErrorPoints = $errorPoints;
     }
 }
