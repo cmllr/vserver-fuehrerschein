@@ -7,7 +7,7 @@
     <body class="body">
         <div class="header">
             <p class="topic"><?php echo $this->SetName; ?></p>
-            <p class="time">Restzeit: 23:59</p>
+            <p class="time hidden"><?php echo $this->GetTranslation("Remaining"); ?> 23:59</p>
         </div>
         <form class="content" action="index.php?q=<?php echo $question->Identifier; ?>" method="post">
             <input id="marked" name="marked" type="checkbox" <?php echo ($question->IsMarked) ? "checked" : ""; ?>>
@@ -22,9 +22,12 @@
                 <?php endforeach; ?>
             </ul>
             <div class="buttons">
-                 <input type="submit" class="button button-danger" name="submit" value="<?php echo $this->GetTranslation("Submit"); ?>">
+                <input type="submit" class="button button-danger" name="submit"  id="submit" value="<?php echo $this->GetTranslation("Submit"); ?>">                
                 <input type="submit" class="button button-mark" name="mark" value="<?php echo $this->GetTranslation("Mark"); ?>">
-                <input type="submit" class="button button-next" value="<?php echo $this->GetTranslation("Next"); ?>">
+                <?php if ($this->QuestionSet[count($this->QuestionSet) - 1] != $question): ?>
+                    <input type="submit" class="button button-next" value="<?php echo $this->GetTranslation("Next"); ?>">
+                <?php endif; ?>
+                <input type="submit" class="hidden" name="save" id="save" value="save">
             </div>
         </form>
         <div class="tab">
@@ -33,14 +36,14 @@
             </ul>
             <div id='tab1' class='tabPane'>
                 <?php for ($i = 0; $i < count($this->QuestionSet); $i++) : ?>
-                    <a href='index.php?q=<?php echo $i; ?>'><div class="question <?php echo $this->QuestionSet[$i]->IsMarked? "marked" : "";?>" id="<?php echo $i; ?>"><?php echo $i + 1; ?></div></a>
+                    <a href='index.php?q=<?php echo $i; ?>'><div class="question <?php echo $this->QuestionSet[$i]->IsMarked ? "marked" : ""; ?>" id="<?php echo $i; ?>"><?php echo $i + 1; ?></div></a>
                     <?php endfor; ?>
             </div>
         </div>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
         <script>
-            $(".button-mark").click(function () {
+            $(".button-mark").click(function() {
                 var target = $(".question#" + $("#question").val());
                 var white = "rgb(255, 255, 255)";
                 var marked = $(this).css("background-color");
@@ -49,9 +52,24 @@
                     $(".question#" + $("#question").val()).css("background-color", marked);
                 else
                     $(".question#" + $("#question").val()).css("background-color", white);
-                
+
             });
-            $('ul.tabs').each(function () {
+            $("input[type='checkbox']").change(function() {
+                $("#save").trigger("click");
+            });
+            $("form").submit(function(e) {
+                var btn = $(document.activeElement);
+                if (btn.context.name == "submit") {
+                    var marked = $(".marked").length;
+                    if (marked != 0) {
+                        var confirmation = confirm("<?php echo $this->GetTranslation("SubmitWarning"); ?>");
+                        return confirmation;
+                    }
+                   
+                }
+
+            });
+            $('ul.tabs').each(function() {
                 // For each set of tabs, we want to keep track of
                 // which tab is active and it's associated content
                 var $active, $content, $links = $(this).find('a');
@@ -64,12 +82,12 @@
                 $content = $($active[0].hash);
 
                 // Hide the remaining content
-                $links.not($active).each(function () {
+                $links.not($active).each(function() {
                     $(this.hash).hide();
                 });
 
                 // Bind the click event handler
-                $(this).on('click', 'a', function (e) {
+                $(this).on('click', 'a', function(e) {
                     // Make the old tab inactive.
                     $active.removeClass('active');
                     $content.hide();

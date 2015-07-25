@@ -16,12 +16,13 @@ class Kernel {
     private $QuestionSet;
     private $SetName;
     private $Name;
+    private $MaximumAllowedErrors;
 
     public function __construct() {
         $this->UpdateSession();
         $this->SetName = $this->GetTranslation("VServer");
         $this->Name = $this->GetTranslation("VServerDriverLicense");
-
+        $this->MaximumAllowedErrors = 3;
         if (!isset($_GET["q"])) {
             include './Views/welcome.php';
         } else {
@@ -46,16 +47,21 @@ class Kernel {
                 $wantedIndex = 0;
 
                 $_SESSION["QuestionSet"] = $this->QuestionSet;
-                if (!isset($_POST["mark"]))
-                    $question = (isset($this->QuestionSet[$currentIndex++])) ? $this->QuestionSet[$currentIndex++] : null;
-                else
-                    $question = $currentQuestion;
-                if (isset($_POST["submit"])){
-                    //user wants to see his shitty result
-                    $question = null;
+                if (!isset($_POST["save"])) {
+                    if (!isset($_POST["mark"]))
+                        $question = (isset($this->QuestionSet[$currentIndex++])) ? $this->QuestionSet[$currentIndex++] : null;
+                    else
+                        $question = $currentQuestion;
+                    if (isset($_POST["submit"])) {
+                        //user wants to see his shitty result
+                        $question = null;
+                    }
+                    if ($question == $currentQuestion && !isset($_POST["mark"]))
+                        $question = null;
                 }
-                if ($question == $currentQuestion)
-                    $question = null;
+                else{
+                    $question = $currentQuestion;
+                }
             }
             if (!is_null($question)) {
                 include "./Views/question.php";
@@ -64,9 +70,31 @@ class Kernel {
             }
         }
     }
-    private function CalculateResult(){
-        echo "Ergebnis";
+
+    private function CalculateResult() {
+        $mistakePoints = 0;
+        $maximumErrorPoints = 0;
+        $questions = $_SESSION["QuestionSet"];
+        foreach ($questions as $key => $value) {
+            $maximumErrorPoints += $value->ErrorPoints;
+            if (empty($value->ChoosedAnswers)) {
+                $mistakePoints = $mistakePoints + $value->ErrorPoints;
+            } else {
+                foreach ($value->ChoosedAnswers as $k => $v) {
+                    if (!$v->IsTrue) {
+                        $mistakePoints = $mistakePoints + $value->ErrorPoints;
+                        break;
+                    }
+                }
+            }
+        }
+        $percentage = 0;
+        if ($mistakePoints != 0) {
+            $percentage = (100 / ($maximumErrorPoints / $mistakePoints));
+        }
+        include "./Views/result.php";
     }
+
     private function UpdateSession() {
         if (!isset($_SESSION)) {
             session_start();
@@ -85,8 +113,8 @@ class Kernel {
             new Answer("Antwort 1", true),
             new Answer("Antwort 2", false)
         );
-        $q = new Question("Frage 1", $answers, 0, "http://i0.kym-cdn.com/photos/images/newsfeed/000/096/044/trollface.jpg?1296494117",3);
-        $q2 = new Question("Frage 2", $answers, 1, null,5);
+        $q = new Question("Frage 1", $answers, 0, "http://i0.kym-cdn.com/photos/images/newsfeed/000/096/044/trollface.jpg?1296494117", 3);
+        $q2 = new Question("Frage 2", $answers, 1, null, 5);
         $this->QuestionSet[] = $q;
         $this->QuestionSet[] = $q2;
     }
@@ -96,8 +124,13 @@ class Kernel {
     }
 
     private function GetTranslation($value) {
-        //TODO
-        return $value;
+        //TODO: Session
+        $data = json_decode(file_get_contents("./Language/de-de.json"));
+        if (property_exists($data, $value)) {
+            return $data->{$value};
+        } else {
+            return $value;
+        }
     }
 
 }

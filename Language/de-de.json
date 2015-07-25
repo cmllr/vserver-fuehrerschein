@@ -1,0 +1,22 @@
+{
+    "WelcomeTitle":"Willkommen!",
+    "WelcomeText":"Willkommen beim vServer-Führerschein. Dieser Test zeigt dir, ob Du bereits in der Lage bist, einen vServer zu verwalten.",
+    "StartTest":"Führerscheinprüfung starten",
+    "VServerDriverLicense":"vServer-Führerschein",
+    "Submit":"Abgegeben",
+    "Mark":"Markieren",
+    "Next":"Nächse Frage",
+    "Remaining":"Restzeit:",
+    "ResultTitle":"Prüfungsergebnis",
+    "YourAnswers":"Deine Antwort(en)",
+    "NoAnswer":"Frage nicht beantwortet",
+    "CorrectAnswer":"Frage korrekt beantwortet",
+    "WrongAnswer":"Frage falsch beantwortet",
+    "Mistakes":"Fehlerpunkte",
+    "MaximumMistakes":"Maximal erlaubte Fehlerpunkte",
+    "Fail":"Du bist durchgefallen!",
+    "FailDescription":"Du solltest Dir ernsthaft überlegen, ob du dir einen vServer zulegen willst. Du verfügst momentan nicht über die notwendigen Kenntnisse, einen vServer sicher verwalten zu können.",
+    "Success":"Du hast bestanden!",
+    "SuccessDescription":"Du hast gezeigt, dass du einen vServer sicher administrieren kannst!",
+    "SubmitWarning":"Abgeben? Es sind noch Fragen markiert"
+}

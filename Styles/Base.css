@@ -106,6 +106,9 @@ and open the template in the editor.
 #marked{
     display:none;
 }
+.hidden{
+    display:none;
+}
 .content{
     position: relative;
     top: 8%;
@@ -127,4 +130,21 @@ ul.answers{
 }
 ul.answers li{
     margin-top: 10%;
+}
+.progress{
+    width: 100%;
+    background-color: green;
+    height: 30px;
+}
+.errors{
+    background-color: red;
+    height: 30px;
+}
+
+.welcomeText,.resultContent{
+    margin-left: 25%;
+    margin-top: 16%;
+    margin-right: 25%;
+    border: 1px solid black;
+    padding:7px;
 }
