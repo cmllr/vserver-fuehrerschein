@@ -156,4 +156,6 @@ ul.answers li:not(:first-child){
 }
 .topic{
     padding-left: 8px;
+    text-decoration:none;
+    color:white;
 }

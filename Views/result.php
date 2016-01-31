@@ -7,32 +7,34 @@
     <body class="body">     
         <div class="resultContent">
             <h1><?php echo $this->GetTranslation("ResultTitle"); ?></h1>
+            <h2><?php echo $this->SetName; ?></h2>
             <?php foreach ($questions as $key => $value) : ?>
                 <h2><?php echo $value->Text; ?></h2>
-                <p> <?php echo $this->GetTranslation("YourAnswers"); ?></p>
-                <?php if (count($value->ChoosedAnswers) == 0) : ?>
+                <?php if (is_null($value->ChoosedAnswers) || count($value->ChoosedAnswers) == 0) : ?>
                     <p><?php echo $this->GetTranslation("NoAnswer"); ?></p>
+                <?php else : ?>
+                    <p><?php echo $this->GetTranslation("YourAnswers"); ?></p>
                 <?php endif; ?>
                 <?php foreach ($value->ChoosedAnswers as $k => $v) : ?>
-                    <?php echo $v->Text; ?> <?php echo ($v->IsTrue) ? $this->GetTranslation("CorrectAnswer") : $this->GetTranslation("WrongAnswer"); ?>
+                    <?php echo $v->Text; ?> <?php echo ($v->IsTrue) ? "- <b>" . $this->GetTranslation("CorrectAnswer") . "</b>" : $this->GetTranslation("WrongAnswer"); ?>
                 <?php endforeach; ?>
             <?php endforeach; ?>
             <p>
                 <?php echo $this->GetTranslation("Mistakes") . " " . $mistakePoints; ?>
             </p>
-             <p>
+            <p>
                 <?php echo $this->GetTranslation("MaximumMistakes") . " " . $this->MaximumAllowedErrors; ?>
             </p>
             <?php
-                if ($mistakePoints >= $this->MaximumAllowedErrors) {
-                    echo "<h2>".$this->GetTranslation("Fail")."</h2>";
-                    echo "<p>".$this->GetTranslation("FailDescription")."</p>";
-                } else {
-                    echo "<h2>".$this->GetTranslation("Success")."</h2>";
-                     echo "<p>".$this->GetTranslation("SuccessDescription")."</p>";
-                }
-                ?>
-            
+            if ($mistakePoints >= $this->MaximumAllowedErrors) {
+                echo "<h2>" . $this->GetTranslation("Fail") . "</h2>";
+                echo "<p>" . $this->GetTranslation("FailDescription") . "</p>";
+            } else {
+                echo "<h2>" . $this->GetTranslation("Success") . "</h2>";
+                echo "<p>" . $this->GetTranslation("SuccessDescription") . "</p>";
+            }
+            ?>
+
             <div class="progress">
                 <div class="errors" style="width:<?php echo $percentage; ?>%">                    
                 </div>

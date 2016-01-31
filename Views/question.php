@@ -6,8 +6,7 @@
     </head>
     <body class="body">
         <div class="header">
-            <p class="topic"><?php echo $this->SetName; ?></p>
-            <p class="time hidden"><?php echo $this->GetTranslation("Remaining"); ?> 23:59</p>
+            <p><a class="topic" href="index.php?q=0"><?php echo $this->SetName; ?></a></p>
         </div>
         <form class="content" action="index.php?q=<?php echo $question->Identifier; ?>" method="post">
             <input id="marked" name="marked" type="checkbox" <?php echo ($question->IsMarked) ? "checked" : ""; ?>>
@@ -40,7 +39,7 @@
                     <?php endfor; ?>
             </div>
         </div>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="./Lib/jquery-2.2.0.min.js"></script>
 
         <script>
             $(".button-mark").click(function() {

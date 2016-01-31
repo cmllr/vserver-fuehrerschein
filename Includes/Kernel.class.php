@@ -20,9 +20,9 @@ class Kernel {
 
     public function __construct() {
         $this->UpdateSession();
-        $this->SetName = $this->GetTranslation("vServer-Führerschein der Klasse B");
+        $this->SetName = $this->GetTranslation("vServer-FührerscheinB");
         $this->Name = $this->GetTranslation("VServerDriverLicense");
-        $this->MaximumAllowedErrors = 3;
+        $this->MaximumAllowedErrors = 10;
         if (!isset($_GET["q"])) {
             include './Views/welcome.php';
         } else {
@@ -93,6 +93,7 @@ class Kernel {
         if ($mistakePoints != 0) {
             $percentage = (100 / ($maximumErrorPoints / $mistakePoints));
         }
+        session_destroy();
         include "./Views/result.php";
     }
 
