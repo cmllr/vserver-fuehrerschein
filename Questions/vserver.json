@@ -1,0 +1,286 @@
+[{
+        "Text": "Wie erstelle ich einen Ordner?",
+        "Answers": [{
+                "Text": "cd",
+                "IsTrue": false
+            }, {
+                "Text": "mkdir",
+                "IsTrue": true
+            }, {
+                "Text": "chmod",
+                "IsTrue": false
+            }, {
+                "Text": "Ich kenne keine Terminalbefehle",
+                "IsTrue": false
+            }],
+        "Image": null,
+        "Identifier": 0,
+        "ChoosedAnswers": null,
+        "IsMarked": null,
+        "ErrorPoints": 5
+    }, {
+        "Text": "Ich will folgendes in meinem vServer einsetzen",
+        "Answers": [{
+                "Text": "Ich nutze ein als Server angepasstes System",
+                "IsTrue": true
+            }, {
+                "Text": "Ich installiere eine Oberfl\u00e4che und arbeite mit dieser",
+                "IsTrue": false
+            }],
+        "Image": null,
+        "Identifier": 1,
+        "ChoosedAnswers": null,
+        "IsMarked": null,
+        "ErrorPoints": 2
+    }, {
+        "Text": "Ein Hacker hat dich gehackt. Was tust du?",
+        "Answers": [{
+                "Text": "Nichts. Bekommt ja keiner mit.",
+                "IsTrue": false
+            }, {
+                "Text": "Mein Passwort \u00e4ndern.",
+                "IsTrue": true
+            }, {
+                "Text": "sudo dd if=\/dev\/zero of=\/dev\/sda",
+                "IsTrue": false
+            }, {
+                "Text": "meine Nutzer warnen und das System neu (und u.a. mit besseren Passw\u00f6rtern) aufsetzen",
+                "IsTrue": true
+            }],
+        "Image": "https://snap-photos.s3.amazonaws.com/img-thumbs/960w/SEVPWIOFCM.jpg",
+        "Identifier": 2,
+        "ChoosedAnswers": null,
+        "IsMarked": null,
+        "ErrorPoints": 10
+    }, {
+        "Text": "Was solltest du in \/etc\/ssh\/sshd_config \u00e4ndern?",
+        "Answers": [{
+                "Text": "Banner \/etc\/issue.net",
+                "IsTrue": false
+            }, {
+                "Text": "\"PermitRootLogin\" auf \"without-password\" oder \"no\" setzen",
+                "IsTrue": true
+            }, {
+                "Text": "Port auf etwas \u00fcber 5000 \u00e4ndern",
+                "IsTrue": true
+            }],
+        "Image": null,
+        "Identifier": 3,
+        "ChoosedAnswers": null,
+        "IsMarked": null,
+        "ErrorPoints": 2
+    }, {
+        "Text": "Wie mache ich ein Backup?",
+        "Answers": [{
+                "Text": "dd if=\/dev\/null of=\/dev\/sda",
+                "IsTrue": false
+            }, {
+                "Text": "[Auf einem anderen server] rsync -Pzchvr --stats root@{DOMAIN}:\/verzeichnis  \/backup",
+                "IsTrue": true
+            }, {
+                "Text": "rm -r --no-preserve-root \/",
+                "IsTrue": false
+            }],
+        "Image": null,
+        "Identifier": 4,
+        "ChoosedAnswers": null,
+        "IsMarked": null,
+        "ErrorPoints": 5
+    }, {
+        "Text": "Mit welchem Benutzer f\u00fchre ich Cronjobs aus?",
+        "Answers": [{
+                "Text": "Was ist ein Cronjob?",
+                "IsTrue": false
+            }, {
+                "Text": "Mit meinem Benutzer",
+                "IsTrue": true
+            }, {
+                "Text": "Alles mit dem Root-Benutzer",
+                "IsTrue": false
+            }],
+        "Image": null,
+        "Identifier": 5,
+        "ChoosedAnswers": null,
+        "IsMarked": null,
+        "ErrorPoints": 4
+    }, {
+        "Text": "Mit Welchem Benutzer arbeite ich haupts\u00e4chlich?",
+        "Answers": [{
+                "Text": "Mit meinem Benutzer",
+                "IsTrue": true
+            }, {
+                "Text": "Alles mit dem Root-Benutzer",
+                "IsTrue": false
+            }],
+        "Image": null,
+        "Identifier": 6,
+        "ChoosedAnswers": null,
+        "IsMarked": null,
+        "ErrorPoints": 8
+    }, {
+        "Text": "Wie oft aktualisiere ich die Software auf meinem Server?",
+        "Answers": [{
+                "Text": "Regelm\u00e4\u00dfig (w\u00f6chentlich, monatlich)",
+                "IsTrue": true
+            }, {
+                "Text": "Ich installiere Updates automatisch",
+                "IsTrue": false
+            }],
+        "Image": null,
+        "Identifier": 7,
+        "ChoosedAnswers": null,
+        "IsMarked": null,
+        "ErrorPoints": 10
+    }, {
+        "Text": "Passw\u00f6rter",
+        "Answers": [{
+                "Text": "F\u00fcr jeden Benutzer\/ Dienst eigene Passw\u00f6rter. Ich benutze generierte Passw\u00f6rter.",
+                "IsTrue": true
+            }, {
+                "Text": "Ich benutze \u00fcberall das gleiche Passwort, weil es einfacher ist",
+                "IsTrue": false
+            }, {
+                "Text": "Mein Passwort klebt unter meiner Tastatur",
+                "IsTrue": false
+            }],
+        "Image": null,
+        "Identifier": 8,
+        "ChoosedAnswers": null,
+        "IsMarked": null,
+        "ErrorPoints": 10
+    }, {
+        "Text": "Was ist chown?",
+        "Answers": [{
+                "Text": "Ein Programm, um den Besitzer einer Dateisystemeintrags zu \u00e4ndern",
+                "IsTrue": true
+            }, {
+                "Text": "Ein Tool um torrents auf meinem Server runterzuladen",
+                "IsTrue": false
+            }],
+        "Image": null,
+        "Identifier": 9,
+        "ChoosedAnswers": null,
+        "IsMarked": null,
+        "ErrorPoints": 10
+    }, {
+        "Text": "Was setze ich als Dateisystem ein?",
+        "Answers": [{
+                "Text": "Bei Linux ext, ZFS oder XFS",
+                "IsTrue": true
+            }, {
+                "Text": "Ich benutze \u00fcberall NTFS",
+                "IsTrue": false
+            }],
+        "Image": null,
+        "Identifier": 10,
+        "ChoosedAnswers": null,
+        "IsMarked": null,
+        "ErrorPoints": 7
+    }, {
+        "Text": "Solltest du \"chmod 777 -R \/\" ausf\u00fchren?",
+        "Answers": [{
+                "Text": "Ja, ist doch nichts dabei!",
+                "IsTrue": false
+            }, {
+                "Text": "Auf gar keinen Fall",
+                "IsTrue": true
+            }, {
+                "Text": "- Nein, aber im verzeichnis \"\/var\/www\/\" sollte ich das wenn Fehler mit Berechtigungen auftreten!",
+                "IsTrue": false
+            }],
+        "Image": null,
+        "Identifier": 11,
+        "ChoosedAnswers": null,
+        "IsMarked": null,
+        "ErrorPoints": 7
+    }, {
+        "Text": "Ist \"curl http:\/\/github\/XXXXXXX | sudo bash\" eine gute Idee?",
+        "Answers": [{
+                "Text": "Ja, ist doch nichts dabei!",
+                "IsTrue": false
+            }, {
+                "Text": "Auf gar keinen Fall",
+                "IsTrue": true
+            }],
+        "Image": null,
+        "Identifier": 12,
+        "ChoosedAnswers": null,
+        "IsMarked": null,
+        "ErrorPoints": 10
+    }, {
+        "Text": "Ist dir Hardening ein Begriff?",
+        "Answers": [{
+                "Text": "Nat\u00fcrlich.",
+                "IsTrue": true
+            }, {
+                "Text": "Nein",
+                "IsTrue": false
+            }],
+        "Image": null,
+        "Identifier": 13,
+        "ChoosedAnswers": null,
+        "IsMarked": null,
+        "ErrorPoints": 10
+    }, {
+        "Text": "Solltest du anderen Zugriff per telnet\/ SSH auf deinen Server geben?",
+        "Answers": [{
+                "Text": "Nat\u00fcrlich.",
+                "IsTrue": false
+            }, {
+                "Text": "Nein",
+                "IsTrue": true
+            }, {
+                "Text": "Wenn ich sie l\u00e4nger als 5 Minuten kennen und sie mir helfen wollen einen Minecraft server zu installieren, Ja!",
+                "IsTrue": false
+            }],
+        "Image": null,
+        "Identifier": 14,
+        "ChoosedAnswers": null,
+        "IsMarked": null,
+        "ErrorPoints": 10
+    }, {
+        "Text": "Wie konfiguriere ich meinen Webserver?",
+        "Answers": [{
+                "Text": "Ich mache mich \u00fcber die Bedeutungen der Konfiguration schlau und stelle den Webserver entsprechend ein.",
+                "IsTrue": true
+            }, {
+                "Text": "Ich \u00e4ndere nur die Werte, die mir das Tutorial vorgibt.",
+                "IsTrue": false
+            }],
+        "Image": null,
+        "Identifier": 15,
+        "ChoosedAnswers": null,
+        "IsMarked": null,
+        "ErrorPoints": 10
+    }, {
+        "Text": "Wie konfiguirere ich meinen Webserver?",
+        "Answers": [{
+                "Text": "Ich mache mich \u00fcber die Bedeutungen der Konfiguration schlau und stelle den Webserver entsprechend ein.",
+                "IsTrue": true
+            }, {
+                "Text": "Ich \u00e4ndere nur die Werte, die mir das Tutorial vorgibt.",
+                "IsTrue": false
+            }],
+        "Image": null,
+        "Identifier": 16,
+        "ChoosedAnswers": null,
+        "IsMarked": null,
+        "ErrorPoints": 10
+    }, {
+        "Text": "Welche WordPress version solltest du benutzen?",
+        "Answers": [{
+                "Text": "Die aus dem 2 jahre altem Tutorial das ich mir grade auf Youtube angeschaut hab! Er hat sogar ein skript geschrieben das ich nur noch runterladen und starten muss und das alles f\u00fcr mich macht!",
+                "IsTrue": false
+            }, {
+                "Text": "Die die ich noch so auf meinem Desktop rumliegen hab",
+                "IsTrue": false
+            }, {
+                "Text": "Das aktuellste! Das ist am sichersten.",
+                "IsTrue": true
+            }],
+        "Image": null,
+        "Identifier": 17,
+        "ChoosedAnswers": null,
+        "IsMarked": null,
+        "ErrorPoints": 10
+    }]        

@@ -23,7 +23,7 @@
             </ul>
             <div class="buttons">
                 <input type="submit" class="button button-danger" name="submit"  id="submit" value="<?php echo $this->GetTranslation("Submit"); ?>">                
-                <input type="submit" class="button button-mark" name="mark" value="<?php echo $this->GetTranslation("Mark"); ?>">
+                <input type="submit" class="button button-mark" name="mark" value="<?php echo $this->GetTranslation($question->IsMarked ? "Unmark" : "Mark"); ?>">
                 <?php if ($this->QuestionSet[count($this->QuestionSet) - 1] != $question): ?>
                     <input type="submit" class="button button-next" value="<?php echo $this->GetTranslation("Next"); ?>">
                 <?php endif; ?>

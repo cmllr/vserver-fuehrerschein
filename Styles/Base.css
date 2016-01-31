@@ -121,14 +121,14 @@ and open the template in the editor.
     margin: 41px;
 }
 ul.answers{
-    width: 30%;
+    margin-top:5%;
+    width: 40%;
     display: inline-block;
     position: absolute;
     left: 46%;
-    top: 11%;
     list-style-type: none;
 }
-ul.answers li{
+ul.answers li:not(:first-child){
     margin-top: 10%;
 }
 .progress{
@@ -147,4 +147,13 @@ ul.answers li{
     margin-right: 25%;
     border: 1px solid black;
     padding:7px;
+}
+.resultContent{
+    margin-top:0px;
+}
+.css-label{
+    padding-left:40px !important;
+}
+.topic{
+    padding-left: 8px;
 }

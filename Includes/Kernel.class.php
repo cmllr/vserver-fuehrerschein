@@ -20,7 +20,7 @@ class Kernel {
 
     public function __construct() {
         $this->UpdateSession();
-        $this->SetName = $this->GetTranslation("VServer");
+        $this->SetName = $this->GetTranslation("vServer-Führerschein der Klasse B");
         $this->Name = $this->GetTranslation("VServerDriverLicense");
         $this->MaximumAllowedErrors = 3;
         if (!isset($_GET["q"])) {
@@ -47,6 +47,7 @@ class Kernel {
                 $wantedIndex = 0;
 
                 $_SESSION["QuestionSet"] = $this->QuestionSet;
+                
                 if (!isset($_POST["save"])) {
                     if (!isset($_POST["mark"]))
                         $question = (isset($this->QuestionSet[$currentIndex++])) ? $this->QuestionSet[$currentIndex++] : null;
@@ -59,7 +60,7 @@ class Kernel {
                     if ($question == $currentQuestion && !isset($_POST["mark"]))
                         $question = null;
                 }
-                else{
+                else {
                     $question = $currentQuestion;
                 }
             }
@@ -109,14 +110,7 @@ class Kernel {
     }
 
     private function SetUpQuestions() {
-        $answers = array(
-            new Answer("Antwort 1", true),
-            new Answer("Antwort 2", false)
-        );
-        $q = new Question("Frage 1", $answers, 0, "http://i0.kym-cdn.com/photos/images/newsfeed/000/096/044/trollface.jpg?1296494117", 3);
-        $q2 = new Question("Frage 2", $answers, 1, null, 5);
-        $this->QuestionSet[] = $q;
-        $this->QuestionSet[] = $q2;
+        $this->QuestionSet = json_decode(file_get_contents("./Questions/vserver.json"));
     }
 
     private function GetQuestion($identifier) {
